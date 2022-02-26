@@ -1,0 +1,14 @@
+.loginImage {
+  display: flex;
+  justify-content: center;
+}
+
+.loginForm {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+button {
+  margin-top: 15px;
+}
