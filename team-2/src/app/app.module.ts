@@ -26,8 +26,8 @@ import { RouterModule } from '@angular/router';
     WidgetComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
       {path: 'registration', component: RegistrationComponent}
