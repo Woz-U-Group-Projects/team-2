@@ -9,7 +9,21 @@ import { RegistrationComponent } from './registration/registration.component';
 import { UserComponent } from './user/user.component';
 import { WidgetComponent } from './widget/widget.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: "",
+    redirectTo: '/login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'Profile',
+    component: ProfileComponent
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
