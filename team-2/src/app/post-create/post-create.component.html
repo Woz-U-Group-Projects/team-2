@@ -1,1 +1,24 @@
-<p>post-create works!</p>
+<div class="container">
+  <h2>Ramble On</h2>
+  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+    <div class="mb-3">
+      <label for="" class="form-label">Title</label>
+      <input type="text"
+        class="form-control"
+        name="title"
+        ngModel
+        required
+        #title="ngModel">
+    </div>
+    <div class="mb-3">
+      <label for="" class="form-label">Content</label>
+      <textarea class="form-control" rows="5"
+        name="content"
+        ngModel
+        required></textarea>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-outline-dark">Save Ramble</button>
+    </div>
+  </form>
+</div>

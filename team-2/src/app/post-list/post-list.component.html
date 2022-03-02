@@ -1,1 +1,23 @@
-<p>post-list works!</p>
+<div class="container">
+  <br>
+  <h4 style="margin-top: 5rem;">Past Rambles</h4>
+  <br>
+  <div class="accordion" *ngIf="posts.length > 0">
+    <div class="accordion-item" *ngFor="let post of posts">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          {{ post.title }}
+        <p *ngIf="posts.length <=0">No posts added yet></p>
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+           {{ post.content }}
+        </div>
+        <br>
+        <button type="button" class="btn btn-outline-primary btn-sm" style="margin-left: 4px; margin-bottom: 4px;">Edit</button>
+        <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="button" style="margin-left: 4px; margin-bottom: 4px;">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
