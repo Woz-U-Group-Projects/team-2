@@ -1,0 +1,25 @@
+.logo {
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 125px;
+}
+
+.truck {
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+}
+
+.h1 {
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 125px;
+}

@@ -12,6 +12,7 @@ import { PostCreateComponent } from './post-create/post-create.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { WidgetComponent } from './widget/widget.component';
 import { RouterModule } from '@angular/router';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +24,17 @@ import { RouterModule } from '@angular/router';
     RegistrationComponent,
     PostCreateComponent,
     PostListComponent,
-    WidgetComponent
+    WidgetComponent,
+    SidebarComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
-      {path: 'registration', component: RegistrationComponent}
+      {path: 'registration', component: RegistrationComponent},
+      {path: 'profile', component: ProfileComponent},
+      {path: 'sidebar', component: SidebarComponent}
     ])
   ],
   providers: [],
