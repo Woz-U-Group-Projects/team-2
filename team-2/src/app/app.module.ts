@@ -34,7 +34,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
       {path: 'login', component: LoginComponent},
       {path: 'registration', component: RegistrationComponent},
       {path: 'profile', component: ProfileComponent},
-      {path: 'sidebar', component: SidebarComponent}
+      {path: 'sidebar', component: SidebarComponent},
+      {path: 'navbar', component: NavbarComponent}
     ])
   ],
   providers: [],
