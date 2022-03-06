@@ -1,0 +1,42 @@
+.navbar {
+  font-family: 'Orelega One';
+}
+
+.logo {
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  max-width: 100%;
+  height: auto;
+  justify-content: center;
+}
+
+.truck {
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  height: auto;
+  max-width: 65%;
+  align-content: flex-start;
+  margin-top: 175px;
+}
+
+.middle {
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 125px;
+}
+
+.right {
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 125px;
+}

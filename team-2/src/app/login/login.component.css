@@ -1,6 +1,9 @@
 .loginImage {
   display: flex;
   justify-content: center;
+  max-width: 100%;
+  height: auto;
+  margin-top: 5rem;
 }
 
 .loginForm {
@@ -12,3 +15,4 @@
 button {
   margin-top: 15px;
 }
+

@@ -1,5 +1,19 @@
-.registration {
-  max-width: 60%;
+.createProfile {
+  font-family: 'Orelega One';
 }
 
+.aboveDisplay {
+  margin-top: 2rem;
+}
 
+.topMargin {
+  margin-top: .75rem;
+}
+
+.formTop {
+  margin-top: 1.75rem;
+}
+
+.form-text {
+  font-size: 10px;;
+}

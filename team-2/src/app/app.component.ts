@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
 
   constructor(private _router: Router) { }
@@ -16,5 +17,8 @@ export class AppComponent {
   navigateToLogin() {
     this._router.navigateByUrl('/login')
   }
+
   title = 'Truck-U';
 }
+
+
