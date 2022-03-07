@@ -17,6 +17,9 @@ export class AppComponent {
   navigateToLogin() {
     this._router.navigateByUrl('/login')
   }
+  navigateToRegistration() {
+    this._router.navigate(['registration'])
+  }
 
   title = 'Truck-U';
 }
