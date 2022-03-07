@@ -1,0 +1,12 @@
+.one {
+  display: flex;
+  justify-content: center;
+}
+
+.display {
+  font-family: 'Orelega One';
+}
+
+/* .two {
+  max-width: 70%;
+} */
