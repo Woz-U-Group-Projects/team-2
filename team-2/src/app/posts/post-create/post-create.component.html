@@ -1,35 +1,37 @@
-<div class="container one">
-  <div class="row">
-    <div class="display-4 display text-center">Create a New Post</div>
-    <div class="col-lg">
-      <form class="form" (submit)="onAddPost(postForm)" #postForm="ngForm">
-        <div class="form-group justify-content-center">
-          <label for="">Title</label>
-          <input
-            type="text"
-            class="title form-control"
-            aria-describedby="emailHelp"
-            placeholder="Enter a title for your post"
-            name="title"
-            required>
-            <small id="" class="form-text text-muted"></small>
-        </div>
-        <div class="form-group">
-          <label for="">Content</label>
-          <textarea
+<div class="container">
+    <div class="display-4 display text-center">Create a New Post
+    </div>
+    <div class="row">
+      <div class="col-lg">
+        <form class="form" (submit)="onAddPost(postForm)" #postForm="ngForm">
+          <div class="form-group justify-content-center">
+            <label for="title">Title</label>
+              <input
+              type="text"
+              class="title form-control"
+              aria-describedby=""
+              placeholder="Enter a title for your post"
+              name="title"
+              ngModel
+              />
+            <!-- <small id="" class="form-text text-muted"></small> -->
+          </div>
+          <div class="form-group">
+            <label for="contentArea" class="form-label mt-4">Content</label>
+            <textarea
             rows="5"
-            class="content form-control"
+            class="form-control"
             placeholder="Add Content"
             name="content"
-            required>
-          </textarea>
-        </div>
-        <br>
-        <button type="submit" class="btn btn-primary">Save Post</button>
-        <hr>
-      </form>
+            ngModel>
+            </textarea>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary">Save Post</button>
+          <hr>
+        </form>
+      </div>
     </div>
-  </div>
 </div>
 
 
