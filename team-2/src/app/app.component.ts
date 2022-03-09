@@ -15,7 +15,7 @@ export class AppComponent {
     this._router.navigate(['profile'])
   }
   navigateToLogin() {
-    this._router.navigateByUrl('/login')
+    this._router.navigate(['/login'])
   }
   navigateToRegistration() {
     this._router.navigate(['registration'])
