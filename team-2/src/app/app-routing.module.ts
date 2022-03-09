@@ -11,6 +11,10 @@ import { WidgetComponent } from './widget/widget.component';
 
 const routes: Routes = [
   {
+    path: 'registration',
+    component: RegistrationComponent
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
@@ -20,9 +24,25 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'Profile',
+    path: 'profile',
     component: ProfileComponent
   },
+  {
+    path: 'create',
+    component: PostCreateComponent
+  },
+  {
+    path: 'allposts',
+    component: PostListComponent
+  },
+  {
+    path: 'home',
+    component: UserComponent
+  },
+  {
+    path: 'widget',
+    component: WidgetComponent
+  }
 ];
 
 @NgModule({

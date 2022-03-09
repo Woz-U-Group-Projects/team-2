@@ -8,7 +8,7 @@ const app = express();
 
 mongoose.connect("mongodb+srv://cleensvaart:g2L^VdmzuvsJJ85Db^@truck-u.xn293.mongodb.net/TRUCK-U?retryWrites=true&w=majority")
   .then(() => {
-    console.log('Connectd to the database!')
+    console.log('Connected to the database!')
   })
   .catch(() => {
     console.log('Connection failed!');
@@ -30,19 +30,20 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post("/api/posts", (req, res, next) => {
+app.post("/posts", (req, res, next) => {
   const post = new Post({
     title: req.body.title,
     content: req.body.content
   });
-  post.save();
-  console.log(post);
-  res.status(201).json({
-    message: 'Post added successfully'
+  post.save().then(createdPost => {
+    res.status(201).json({
+      message: 'Post added successfully',
+      postId: createdPost._id
+    });
   });
 });
 
-app.get("/api/posts", (req, res, next) => {
+app.get("/posts", (req, res, next) => {
   Post.find().then(documents => {
     res.status(200).json({
       message: "Posts fetched successfully!",
@@ -51,7 +52,7 @@ app.get("/api/posts", (req, res, next) => {
   });
 });
 
-app.delete("api/posts/:id", (req, res, next) => {
+app.delete("/posts/:id", (req, res, next) => {
   Post.deleteOne({_id: req.params.id}).then(result => {
     console.log(result);
     res.status(200).json({ message: "Post deleted!" });

@@ -36,13 +36,6 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-      {path: 'login', component: LoginComponent},
-      {path: 'registration', component: RegistrationComponent},
-      {path: 'profile', component: ProfileComponent},
-      {path: 'sidebar', component: SidebarComponent},
-      {path: 'navbar', component: NavbarComponent},
-      {path: 'posts', component: PostCreateComponent},
-      {path: 'postlist', component: PostListComponent}
     ])
   ],
   providers: [],
