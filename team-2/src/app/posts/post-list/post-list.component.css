@@ -2,3 +2,18 @@
   display: flex;
   justify-content: center;
 }
+
+.buttons {
+  display: flex;
+  justify-content: end;
+  margin: 0 10px 10px 0;
+}
+
+.edit {
+  margin: 0 10px 0 0;
+}
+
+.title {
+  font-weight:800;
+  font-size: .5em;
+}

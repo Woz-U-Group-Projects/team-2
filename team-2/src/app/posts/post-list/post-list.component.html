@@ -2,7 +2,7 @@
   <div class="accordion" id="accordionExample" multi="true" *ngIf="posts.length > 0">
     <div class="accordion-item" *ngFor="let post of posts">
       <h2 class="accordion-header" id="headingOne">
-        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        <button class="accordion-button title" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
           {{ post.title }}
         </button>
       </h2>
@@ -10,8 +10,10 @@
         <div class="accordion-body">
           <p>{{ post.content }}</p>
         </div>
-        <button type="button" class="btn btn-outline-info">Edit</button>
-        <button type="button" class="btn btn-outline-danger" (click)="onDelete(post.id)">Delete</button>
+        <div class="buttons">
+          <button type="button" class="btn btn-outline-info edit">Edit</button>
+          <button type="button" class="btn btn-outline-danger" (click)="onDelete(post.id)">Delete</button>
+          </div>
       </div>
     </div>
   </div>
