@@ -11,7 +11,7 @@
           <p>{{ post.content }}</p>
         </div>
         <div class="buttons">
-          <button type="button" class="btn btn-outline-info edit">Edit</button>
+          <a type="button" class="btn btn-outline-info edit" [routerLink]="['/edit', post.id]">Edit</a>
           <button type="button" class="btn btn-outline-danger" (click)="onDelete(post.id)">Delete</button>
           </div>
       </div>

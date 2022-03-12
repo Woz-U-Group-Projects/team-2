@@ -1,10 +1,17 @@
 <div class="container">
-    <div class="display-4 display text-center">Ramble On...
-    </div>
+  <div class="display-4 display text-center">Ramble On...
+  </div>
     <div class="row">
       <div class="col">
-        <form class="form" (submit)="onAddPost(postForm)" #postForm="ngForm">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" *ngIf="isLoading">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        <form class="form" (submit)="onSavePost(postForm)" #postForm="ngForm" *ngIf="!isLoading">
           <div class="form-group justify-content-center">
+            <div class="d-flex justify-content-center">
+            </div>
             <label for="title">Title</label>
               <input
               type="text"
@@ -12,7 +19,7 @@
               aria-describedby=""
               placeholder="Enter a title for your post"
               name="title"
-              ngModel
+              [ngModel]="post?.title"
               />
             <!-- <small id="" class="form-text text-muted"></small> -->
           </div>
@@ -23,7 +30,7 @@
             class="form-control"
             placeholder="Add Content"
             name="content"
-            ngModel>
+            [ngModel]="post?.content">
             </textarea>
           </div>
           <br>

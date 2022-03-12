@@ -10,6 +10,9 @@ import { UserComponent } from './user/user.component';
 import { WidgetComponent } from './widget/widget.component';
 
 const routes: Routes = [
+  { path: '', component: PostListComponent },
+  { path: 'create', component: PostCreateComponent },
+  { path: 'edit/:postId', component: PostCreateComponent },
   {
     path: 'registration',
     component: RegistrationComponent
@@ -18,17 +21,21 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
-  {
-    path: "",
-    redirectTo: '/login',
-    pathMatch: 'full'
-  },
+  // {
+  //   path: "",
+  //   redirectTo: '/home',
+  //   pathMatch: 'full'
+  // },
   {
     path: 'profile',
     component: ProfileComponent
   },
   {
     path: 'create',
+    component: PostCreateComponent
+  },
+  {
+    path: 'edit/:postId',
     component: PostCreateComponent
   },
   {
