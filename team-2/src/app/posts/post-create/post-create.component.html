@@ -25,7 +25,7 @@
           <div>
             <br>
             <button type="button" class="btn-sm btn-secondary" (click)="filePicker.click()">Select Image</button>
-            <input type="file" style="visibility: hidden;" #filePicker>
+            <input type="file" style="visibility: hidden;" #filePicker (change)="onImagePicked($event)">
           </div>
           <div class="form-group">
             <label for="contentArea" class="form-label mt-4">Content</label>
