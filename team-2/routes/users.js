@@ -1,12 +1,19 @@
 const express = require("express");
-const user = require("../backend/models/user");
+const User = require("../backend/models/user");
 
 const router = express.Router();
 
-router.user("", (req, res, next) => {
+router.post("", (req, res, next) => {
   const user = new User({
-    title: req.body.title,
-    content: req.body.content
+    userId: req.body.userId,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    userName: req.body.userName,
+    password: req.body.password,
+    personal: req.body.personal,
+    business: req.body.business,
+    admin: req.body.admin
   });
   user.save().then(createdUser => {
     res.status(201).json({
@@ -26,7 +33,7 @@ router.put("/:id", (req, res, next) => {
     password: req.body.password,
     personal: req.body.personal,
     business: req.body.business,
-    admin: req.body.admion
+    admin: req.body.admin
   });
   User.updateOne({userId: req.params.userId}, user).then(result => {
     res.status(200).json({message: 'Updated!'});

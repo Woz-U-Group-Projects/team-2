@@ -21,7 +21,11 @@
               name="title"
               [ngModel]="post?.title"
               />
-            <!-- <small id="" class="form-text text-muted"></small> -->
+          </div>
+          <div>
+            <br>
+            <button type="button" class="btn-sm btn-secondary" (click)="filePicker.click()">Select Image</button>
+            <input type="file" style="visibility: hidden;" #filePicker>
           </div>
           <div class="form-group">
             <label for="contentArea" class="form-label mt-4">Content</label>
