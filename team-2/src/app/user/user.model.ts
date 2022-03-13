@@ -1,11 +1,11 @@
-import { IntegerDataType } from "sequelize/types";
-
 export interface User {
-  userId: number;
+  userId: string;
   firstName: string;
   lastName: string;
   email: string;
   userName: string;
   password: string;
+  personal: boolean;
+  business: boolean;
   admin: boolean;
 }
