@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { User } from './user.model';
+import { HttpClient } from '@angular/common/http';
 
 import { UsersService } from './users.service';
 
@@ -41,15 +42,15 @@ export class UserComponent implements OnInit {
     });
   }
 
-//   onSaveUser(form: NgForm) {
-//     if (form.invalid) {
-//       return;
-//     }
-//     if (this.mode === 'create') {
-//       this.usersService.addUser(form.value.userId, form.value.firstName, form.value.lastName, form.value.email, form.value.userName, form.value.password, form.value.personal, form.value.business, form.value.admin);
-//     } else {
-//       this.usersService.updateUser(this.userId, form.value.firstName, form.value.lastName, form.value.email, form.value.userName, form.value.password, form.value.personal, form.value.business, form.value.admin);
-//     }
-//     form.resetForm();
-//   }
+  onSaveUser(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
+    if (this.mode === 'create') {
+      this.usersService.addUser(form.value.userId, form.value.firstName, form.value.lastName, form.value.email, form.value.userName, form.value.password, form.value.personal, form.value.business, form.value.admin);
+    } else {
+      this.usersService.updateUser(this.userId, form.value.firstName, form.value.lastName, form.value.email, form.value.userName, form.value.password, form.value.personal, form.value.business, form.value.admin);
+    }
+    form.resetForm();
+  }
 }

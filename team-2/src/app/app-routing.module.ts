@@ -47,7 +47,7 @@ const routes: Routes = [
     component: PostListComponent
   },
   {
-    path: 'user',
+    path: 'users',
     component: UserComponent
   },
   {

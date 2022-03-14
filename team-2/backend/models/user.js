@@ -7,7 +7,8 @@ const postSchema = mongoose.Schema({
   email: { type: String, required: true },
   password: {type: String, required: true },
   person: { type: Boolean, required: true },
-  business: { type: Boolean, required: true }
+  business: { type: Boolean, required: true },
+  admin: { type: Boolean, required: false }
 });
 
 module.exports = mongoose.model('User', postSchema);
