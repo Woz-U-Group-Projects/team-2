@@ -33,7 +33,7 @@ export class UserComponent implements OnInit {
         this.mode = 'edit';
         this.userId = paramMap.get('userId');
         this.usersService.getUser(this.userId).subscribe(userData => {
-          this.user = {userId: userData.userId, firstName: userData.firstName, lastName: userData.lastName, email: userData.email, userName: userData.userName, password: userData.password, personal: userData.personal, business: userData.business, admin: userData.admin};
+          this.user = {id: userData.userId, firstName: userData.firstName, lastName: userData.lastName, email: userData.email, userName: userData.userName, password: userData.password, personal: userData.personal, business: userData.business, admin: userData.admin};
         });
         } else {
           this.mode = 'create';

@@ -4,7 +4,9 @@
 }
 
 .bigRig {
-  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  max-width: 50%;
   height:auto;
   margin-top: 5.5rem;
 }

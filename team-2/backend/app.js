@@ -2,16 +2,17 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
-const Post = require('./models/post');
 
 const postsRoutes = require("../routes/posts");
 const usersRoutes = require("../routes/users");
 
 const app = express();
 
-mongoose.connect(process.env.MONGODB_URI)
+require('dotenv').config();
+
+mongoose.connect("mongodb+srv://cleensvaart:g2L^VdmzuvsJJ85Db^@truck-u.xn293.mongodb.net/TRUCK-U?retryWrites=true&w=majority")
   .then(() => {
-    console.log('Connected to the database!')
+    console.log('Connected to the database!');
   })
   .catch(() => {
     console.log('Connection failed!');

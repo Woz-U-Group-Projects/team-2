@@ -28,19 +28,19 @@ export class UsersService {
     return this.usersUpdated.asObservable();
   }
 
-  getUser(userId: string) {
-    return this.http.get<{userId: string, firstName: string, lastName: string, email: string, userName: string, password: string, personal: boolean, business: boolean, admin: boolean}>("http://localhost:3000/users/" + userId);
+  getUser(id: string) {
+    return this.http.get<{userId: string, firstName: string, lastName: string, email: string, userName: string, password: string, personal: boolean, business: boolean, admin: boolean}>("http://localhost:3000/users/" + id);
   }
 
-  addUser(userId: string, firstName: string, lastName: string,  userName: string, email: string, password: string, personal: boolean, business: boolean, admin: boolean) {
+  addUser(id: string, firstName: string, lastName: string,  userName: string, email: string, password: string, personal: boolean, business: boolean, admin: boolean) {
     const user: User = {
-      userId: null, firstName: firstName, lastName: lastName, email: email, userName: userName, password: password, personal: personal, business: business, admin: admin
+      id: null, firstName: firstName, lastName: lastName, email: email, userName: userName, password: password, personal: personal, business: business, admin: admin
     };
     this.http
-    .post<{ message: string, userId: string }>("http://localhost:3000/users", user)
+    .post<{ id: string, firstName: string, lastName: string, email: string, userName: string, password: string, personal: boolean, business: boolean, admin: boolean }>("http://localhost:3000/users", user)
       .subscribe(responseData => {
-        const id = responseData.userId;
-        user.userId = id;
+        const id = responseData.id;
+        user.id = id;
         this.users.push(user);
         this.usersUpdated.next([...this.users]);
         this.router.navigate(["/"]);
@@ -49,12 +49,12 @@ export class UsersService {
 
   updateUser(userId: string, firstName: string, lastName: string, email: string, userName: string, password: string, personal: boolean, business: boolean, admin: boolean) {
     const user: User = {
-      userId: userId, firstName: firstName, lastName: lastName, email: email, userName: userName, password: password, personal: personal, business: business, admin: admin
+      id: userId, firstName: firstName, lastName: lastName, email: email, userName: userName, password: password, personal: personal, business: business, admin: admin
     };
     this.http.put("http://localhost:3000/users/" + userId, user)
     .subscribe(response => {
       const updatedUsers = [...this.users];
-      const oldUserIndex = updatedUsers.findIndex(p => p.userId === user.userId);
+      const oldUserIndex = updatedUsers.findIndex(p => p.id === user.id);
       updatedUsers[oldUserIndex] = user;
       this.users = updatedUsers;
       this.usersUpdated.next([...this.users]);
@@ -65,7 +65,7 @@ export class UsersService {
   deleteUser(userId: string) {
     this.http.delete("http://localhost:3000/users/" + userId)
     .subscribe(() => {
-      const updatedUsers = this.users.filter(user => user.userId !== userId);
+      const updatedUsers = this.users.filter(user => user.id !== userId);
       this.users = updatedUsers;
       this.usersUpdated.next([...this.users]);
     });
