@@ -9,6 +9,7 @@ export class LoginComponent implements OnInit {
   onAddPost() {
     alert('BOOM!');
   }
+  
 
   constructor() { }
 
