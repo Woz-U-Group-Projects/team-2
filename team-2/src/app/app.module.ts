@@ -16,6 +16,9 @@ import { RouterModule } from '@angular/router';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BusinessProfileComponent } from './business-profile/business-profile.component';
+import { BusinessPostCreateComponent } from './posts/business-post-create/business-post-create.component';
+import { BusinessPostListComponent } from './posts/business-post-list/business-post-list.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { HttpClientModule } from '@angular/common/http';
     PostCreateComponent,
     PostListComponent,
     WidgetComponent,
-    SidebarComponent
+    SidebarComponent,
+    BusinessProfileComponent,
+    BusinessPostCreateComponent,
+    BusinessPostListComponent
   ],
   imports: [
     AppRoutingModule,
