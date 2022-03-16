@@ -32,20 +32,20 @@ export class UsersService {
     return this.http.get<{userId: string, firstName: string, lastName: string, email: string, userName: string, password: string, personal: boolean, business: boolean, admin: boolean}>("http://localhost:3000/users/" + id);
   }
 
-  addUser(id: string, firstName: string, lastName: string,  userName: string, email: string, password: string, personal: boolean, business: boolean, admin: boolean) {
-    const user: User = {
-      id: null, firstName: firstName, lastName: lastName, email: email, userName: userName, password: password, personal: personal, business: business, admin: admin
-    };
-    this.http
-    .post<{ id: string, firstName: string, lastName: string, email: string, userName: string, password: string, personal: boolean, business: boolean, admin: boolean }>("http://localhost:3000/users", user)
-      .subscribe(responseData => {
-        const id = responseData.id;
-        user.id = id;
-        this.users.push(user);
-        this.usersUpdated.next([...this.users]);
-        this.router.navigate(["/"]);
-      });
-  }
+  // addUser(id: string, firstName: string, lastName: string,  userName: string, email: string, password: string, personal: boolean, business: boolean, admin: boolean) {
+  //   const user: User = {
+  //     id: null, firstName: firstName, lastName: lastName, email: email, userName: userName, password: password, personal: personal, business: business, admin: admin
+  //   };
+  //   this.http
+  //   .post<{ id: string, firstName: string, lastName: string, email: string, userName: string, password: string, personal: boolean, business: boolean, admin: boolean }>("http://localhost:3000/users", user)
+  //     .subscribe(responseData => {
+  //       const id = responseData.id;
+  //       user.id = id;
+  //       this.users.push(user);
+  //       this.usersUpdated.next([...this.users]);
+  //       this.router.navigate(["/"]);
+  //     });
+  // }
 
   updateUser(userId: string, firstName: string, lastName: string, email: string, userName: string, password: string, personal: boolean, business: boolean, admin: boolean) {
     const user: User = {

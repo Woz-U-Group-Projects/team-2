@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from "@angular/forms";
-import { ActivatedRoute, ParamMap } from "@angular/router";
-import { User } from './user.model';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import {  Subscription } from 'rxjs';
 
+import { User } from './user.model';
 import { UsersService } from './users.service';
 
 @Component({
@@ -11,46 +9,47 @@ import { UsersService } from './users.service';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit {
-  enteredUserId: "";
-  enteredFirstName: "";
-  enteredLastName: "";
-  enteredEmail: "";
-  enteredUserName: "";
-  enteredPassword: "";
-  enteredPersonal: "";
-  enteredBusiness: "";
-  enteredAdmin: "";
-  user: User;
-  private mode = 'create';
-  private userId: string;
+export class UserComponent implements OnInit, OnDestroy {
+  // enteredUserId: "";
+  // enteredFirstName: "";
+  // enteredLastName: "";
+  // enteredEmail: "";
+  // enteredUserName: "";
+  // enteredPassword: "";
+  // enteredPersonal: "";
+  // enteredBusiness: "";
+  // enteredAdmin: "";
+  users: User[] = [];
+  private usersSub: Subscription = new Subscription;
 
-  constructor(public usersService: UsersService, public route: ActivatedRoute) {}
+  constructor(public usersService: UsersService) {}
 
   ngOnInit() {
-    this.route.paramMap.subscribe((paramMap: ParamMap) => {
-      if (paramMap.has('userId')) {
-        this.mode = 'edit';
-        this.userId = paramMap.get('userId');
-        this.usersService.getUser(this.userId).subscribe(userData => {
-          this.user = {id: userData.userId, firstName: userData.firstName, lastName: userData.lastName, email: userData.email, userName: userData.userName, password: userData.password, personal: userData.personal, business: userData.business, admin: userData.admin};
-        });
-        } else {
-          this.mode = 'create';
-          this.userId = null;
-        }
-    });
+    this.usersService.getUsers();
+    this.usersSub = this.usersService.getUserUpdateListener()
+      .subscribe((users: User[]) => {
+        this.users = users;
+      });
   }
 
-  onSaveUser(form: NgForm) {
-    if (form.invalid) {
-      return;
-    }
-    if (this.mode === 'create') {
-      this.usersService.addUser(form.value.userId, form.value.firstName, form.value.lastName, form.value.email, form.value.userName, form.value.password, form.value.personal, form.value.business, form.value.admin);
-    } else {
-      this.usersService.updateUser(this.userId, form.value.firstName, form.value.lastName, form.value.email, form.value.userName, form.value.password, form.value.personal, form.value.business, form.value.admin);
-    }
-    form.resetForm();
+  onDelete(userId: string) {
+    this.usersService.deleteUser(userId);
+  }
+
+  ngOnDestroy() {
+    this.usersSub.unsubscribe();
   }
 }
+
+//   onSaveUser(form: NgForm) {
+//     if (form.invalid) {
+//       return;
+//     }
+//     if (this.mode === 'create') {
+//       this.usersService.addUser(form.value.userId, form.value.firstName, form.value.lastName, form.value.email, form.value.userName, form.value.password, form.value.personal, form.value.business, form.value.admin);
+//     } else {
+//       this.usersService.updateUser(this.userId, form.value.firstName, form.value.lastName, form.value.email, form.value.userName, form.value.password, form.value.personal, form.value.business, form.value.admin);
+//     }
+//     form.resetForm();
+//   }
+// }

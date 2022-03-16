@@ -9,3 +9,35 @@
       </div> -->
   </div>
 </div>
+
+<div class="container">
+  <div class="accordion" id="accordionExample" multi="true" *ngIf="users.length > 0">
+    <div class="accordion-item" *ngFor="let user of users">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button title" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          {{ user.firstName }} {{ user.lastName }} {{ user.id }}
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <p>First Name: {{ user.firstName }}</p>
+          <p>Last Name: {{ user.lastName }}</p>
+          <p>Email: {{ user.email }}</p>
+          <p>Username: {{ user.userName }}</p>
+          <p>Password: {{ user.password }}</p>
+          <p>Personal Account: {{ user.personal }}</p>
+          <p>Business Account: {{ user.business }}</p>
+          <p>Administrator: {{ user.admin }}</p>
+        </div>
+        <div class="buttons">
+          <a type="button" class="btn btn-outline-info edit" [routerLink]="['/edit', user.id]">Edit</a>
+          <button type="button" class="btn btn-outline-danger" (click)="onDelete(user.id)">Delete</button>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <p class="noUsers" *ngIf="users.length <= 0" >No users created yet...</p>
+  </div>
+</div>
+
