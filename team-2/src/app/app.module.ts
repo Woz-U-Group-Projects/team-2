@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BusinessProfileComponent } from './business-profile/business-profile.component';
 import { BusinessPostCreateComponent } from './posts/business-post-create/business-post-create.component';
 import { BusinessPostListComponent } from './posts/business-post-list/business-post-list.component';
+import { UserCreateComponent } from './usercreate/usercreate.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { BusinessPostListComponent } from './posts/business-post-list/business-p
     SidebarComponent,
     BusinessProfileComponent,
     BusinessPostCreateComponent,
-    BusinessPostListComponent
+    BusinessPostListComponent,
+    UserCreateComponent
   ],
   imports: [
     AppRoutingModule,

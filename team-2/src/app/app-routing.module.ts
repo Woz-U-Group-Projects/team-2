@@ -10,6 +10,7 @@ import { UserComponent } from './user/user.component';
 import { WidgetComponent } from './widget/widget.component';
 import { BusinessPostCreateComponent } from './posts/business-post-create/business-post-create.component';
 import { BusinessPostListComponent } from './posts/business-post-list/business-post-list.component';
+import { UserCreateComponent } from './usercreate/usercreate.component';
 
 const routes: Routes = [
   {
@@ -64,6 +65,10 @@ const routes: Routes = [
   {
     path: 'users',
     component: UserComponent
+  },
+  {
+    path: 'reg',
+    component: UserCreateComponent
   },
   {
     path: 'widget',
