@@ -10,7 +10,6 @@ export class LoginComponent implements OnInit {
     alert('BOOM!');
   }
   
-
   constructor() { }
 
   ngOnInit(): void {
