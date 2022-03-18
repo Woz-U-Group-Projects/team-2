@@ -51,12 +51,12 @@ export class UserCreateService {
 
   adduser(firstName: string, lastName: string, email: string, userName: string, password: string, personal: boolean, business: boolean) {
     const user: User = {
-      id: null, firstName: firstName, lastName: lastName, email: email, userName: userName, password: password, personal:personal, business: business, admin: admin
+      id: null, firstName: firstName, lastName: lastName, email: email, userName: userName, password: password, personal:personal, business: business
     };
     this.http
-      .user<{ message: string, userId: string }>("http://localhost:3000/reg", user)
+      .post<{ message: string, userId: string }>("http://localhost:3000/reg", user)
       .subscribe(responseData => {
-        const id = responseData.postId;
+        const id = responseData.userId;
         user.id = id;
         this.users.push(user);
         this.usersUpdated.next([...this.users]);
@@ -65,7 +65,7 @@ export class UserCreateService {
   }
 
   updatePost(id: string, firstName: string, lastName: string, email: string, userName: string, password: string, personal: boolean, business: boolean, admin: boolean) {
-    const user: User = { id: null, firstName: firstName, lastName: lastName, email: email, userName: userName, password: password, personal:personal, business: business, admin: admin };
+    const user: User = { id: null, firstName: firstName, lastName: lastName, email: email, userName: userName, password: password, personal:personal, business: business };
     this.http.put("http://localhost:3000/users/" + id, user)
     .subscribe(response => {
       const updatedUsers = [...this.users];
