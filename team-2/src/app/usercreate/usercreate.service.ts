@@ -4,7 +4,6 @@ import { Subject } from "rxjs";
 import { map } from "rxjs/operators";
 import { Router, UrlSerializer } from "@angular/router";
 
-import { UserCreateComponent } from "./usercreate.component";
 import { User } from "./usercreate.model";
 
 @Injectable({ providedIn: "root" })
@@ -17,11 +16,12 @@ export class UserCreateService {
   getUsers() {
     this.http
       .get<{ message: string; users: any }>(
-        "http://localhost:3000/reg"
+        "http://localhost:3000/users"
       )
       .pipe(map(userData => {
         return userData.users.map(user => {
           return {
+            id: user._id,
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
@@ -29,8 +29,7 @@ export class UserCreateService {
             password: user.password,
             personal: user.personal,
             business: user.business,
-            admin: user.admin,
-            id: user._id
+            admin: user.admin
           };
         });
       })
@@ -41,12 +40,12 @@ export class UserCreateService {
       });
   }
 
-  getPostUpdateListener() {
+  getUserUpdateListener() {
     return this.usersUpdated.asObservable();
   }
 
   getUser(id: string) {
-    return this.http.get<{_id: string, firstName: string, lastName: string, email: string, userName: string, password: string, personal: boolean, business: boolean, admin: boolean}>("http://localhost:3000/user/" + id);
+    return this.http.get<{_id: string, firstName: string, lastName: string, email: string, userName: string, password: string, personal: boolean, business: boolean, admin: boolean}>("http://localhost:3000/users/" + id);
   }
 
   adduser(firstName: string, lastName: string, email: string, userName: string, password: string, personal: boolean, business: boolean) {
@@ -54,7 +53,7 @@ export class UserCreateService {
       id: null, firstName: firstName, lastName: lastName, email: email, userName: userName, password: password, personal:personal, business: business
     };
     this.http
-      .post<{ message: string, userId: string }>("http://localhost:3000/reg", user)
+      .post<{ message: string, userId: string }>("http://localhost:3000/users", user)
       .subscribe(responseData => {
         const id = responseData.userId;
         user.id = id;

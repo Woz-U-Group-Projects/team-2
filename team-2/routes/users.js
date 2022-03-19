@@ -13,7 +13,7 @@ router.post("", (req, res, next) => {
     password: req.body.password,
     personal: req.body.personal,
     business: req.body.business,
-    admin: req.body.admin
+    // admin: req.body.admin
   });
   user.save().then(createdUser => {
     res.status(201).json({
