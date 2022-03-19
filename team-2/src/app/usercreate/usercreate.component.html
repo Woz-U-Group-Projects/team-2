@@ -26,7 +26,7 @@
           </form>
         </div>
         <div class="col-md-4">
-          <form style="width: 100%" class="formTop">
+          <form style="width: 100%" class="formTop" (submit)="onSaveUser(userForm)" #userForm="ngForm">
             <div class="form-group">
               <label>Username:</label>
               <input type="text" class="form-control" placeholder="" [ngModel]="user?.userName" [ngModelOptions]="{standalone: true}">
