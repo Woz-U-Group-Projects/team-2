@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 import { Subject } from "rxjs";
 import { map } from 'rxjs/operators'
 import { Router } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
 
-import { User } from "./user.model";
+import { User } from "../usercreate/usercreate.model";
 
 @Injectable({providedIn: 'root'})
 export class UsersService {
@@ -32,24 +32,55 @@ export class UsersService {
     return this.http.get<{userId: string, firstName: string, lastName: string, email: string, userName: string, password: string, personal: boolean, business: boolean, admin: boolean}>("http://localhost:3000/users/" + id);
   }
 
-  // addUser(id: string, firstName: string, lastName: string,  userName: string, email: string, password: string, personal: boolean, business: boolean, admin: boolean) {
-  //   const user: User = {
-  //     id: null, firstName: firstName, lastName: lastName, email: email, userName: userName, password: password, personal: personal, business: business, admin: admin
-  //   };
-  //   this.http
-  //   .post<{ id: string, firstName: string, lastName: string, email: string, userName: string, password: string, personal: boolean, business: boolean, admin: boolean }>("http://localhost:3000/users", user)
-  //     .subscribe(responseData => {
-  //       const id = responseData.id;
-  //       user.id = id;
-  //       this.users.push(user);
-  //       this.usersUpdated.next([...this.users]);
-  //       this.router.navigate(["/"]);
-  //     });
-  // }
+  addUser(
+    firstName: string,
+    lastName: string,
+    userName: string,
+    email: string,
+    password: string,
+    personal: boolean,
+    business: boolean)
+    {
+    const user: User =
+    {
+      id: null,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      userName: userName,
+      password: password,
+      personal: personal,
+      business: business
+    };
+    this.http
+      .post<{ message: string, userId: string }>("http://localhost:3000/users", user)
+      .subscribe(responseData => {
+        const id = responseData.userId;
+        user.id = id;
+        this.users.push(user);
+        this.usersUpdated.next([...this.users]);
+        this.router.navigate(["/"]);
+      });
+  }
 
-  updateUser(userId: string, firstName: string, lastName: string, email: string, userName: string, password: string, personal: boolean, business: boolean, admin: boolean) {
+  updateUser(
+    userId: string,
+    firstName: string,
+    lastName: string,
+    email: string,
+    userName: string,
+    password: string,
+    personal: boolean,
+    business: boolean) {
     const user: User = {
-      id: userId, firstName: firstName, lastName: lastName, email: email, userName: userName, password: password, personal: personal, business: business, admin: admin
+      id: userId,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      userName: userName,
+      password: password,
+      personal: personal,
+      business: business
     };
     this.http.put("http://localhost:3000/users/" + userId, user)
     .subscribe(response => {

@@ -14,10 +14,10 @@ export class PostsService {
   constructor(private http: HttpClient, private router: Router) {}
 
   getPosts() {
-    this.http
-      .get<{ message: string; posts: any }>(
-        "http://localhost:3000/posts"
-      )
+    this.http.get<{
+      message: string;
+      posts: any
+    }>("http://localhost:3000/posts")
       .pipe(map(postData => {
         return postData.posts.map(post => {
           return {
@@ -39,12 +39,22 @@ export class PostsService {
   }
 
   getPost(id: string) {
-    return this.http.get<{_id: string, title: string, content: string}>("http://localhost:3000/posts/" + id);
+    return this.http.get
+    <{_id: string,
+      title: string,
+      content: string
+    }>("http://localhost:3000/posts/" + id);
   }
 
-  addPost(title: string, content: string) {
-    const post: Post = {
-      id: null, title: title, content: content
+  addPost(
+    title: string,
+    content: string)
+    {
+    const post: Post =
+    {
+      id: null,
+      title: title,
+      content: content
     };
     this.http
       .post<{ message: string, postId: string }>("http://localhost:3000/posts", post)

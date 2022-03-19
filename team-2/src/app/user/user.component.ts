@@ -10,15 +10,7 @@ import { UsersService } from './users.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit, OnDestroy {
-  // enteredUserId: "";
-  // enteredFirstName: "";
-  // enteredLastName: "";
-  // enteredEmail: "";
-  // enteredUserName: "";
-  // enteredPassword: "";
-  // enteredPersonal: "";
-  // enteredBusiness: "";
-  // enteredAdmin: "";
+
   users: User[] = [];
   private usersSub: Subscription = new Subscription;
 

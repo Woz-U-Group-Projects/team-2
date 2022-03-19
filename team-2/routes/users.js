@@ -5,7 +5,6 @@ const router = express.Router();
 
 router.post("", (req, res, next) => {
   const user = new User({
-    // userId: req.body.userId,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
@@ -13,7 +12,6 @@ router.post("", (req, res, next) => {
     password: req.body.password,
     personal: req.body.personal,
     business: req.body.business,
-    // admin: req.body.admin
   });
   user.save().then(createdUser => {
     res.status(201).json({

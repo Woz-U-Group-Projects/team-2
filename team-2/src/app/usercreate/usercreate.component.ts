@@ -11,7 +11,6 @@ import { UserCreateService } from "./usercreate.service";
   styleUrls: ["./usercreate.component.css"]
 })
 export class UserCreateComponent implements OnInit {
-  enteredUserId: "";
   enteredFirstName: "";
   enteredLastName: "";
   enteredEmail: "";
@@ -19,8 +18,8 @@ export class UserCreateComponent implements OnInit {
   enteredPassword: "";
   enteredPersonal: "";
   enteredBusiness: "";
-  enteredAdmin: "";
   user: User;
+  isLoading = false;
   private mode = 'create';
   private userId: string;
 
@@ -32,7 +31,16 @@ export class UserCreateComponent implements OnInit {
         this.mode = 'edit';
         this.userId = paramMap.get('userId');
         this.usercreateService.getUser(this.userId).subscribe(userData => {
-          this.user = {id: userData._id, firstName: userData.firstName, lastName: userData.lastName, email: userData.email, userName: userData.userName, password: userData.password, personal: userData.personal, business: userData.business};
+          this.isLoading = false;
+          this.user = {
+            id: userData._id,
+            firstName: userData.firstName,
+            lastName: userData.lastName,
+            email: userData.email,
+            userName: userData.userName,
+            password: userData.password,
+            personal: userData.personal,
+            business: userData.business};
         });
         } else {
           this.mode = 'create';
@@ -46,9 +54,24 @@ export class UserCreateComponent implements OnInit {
       return;
     }
     if (this.mode === 'create') {
-      this.usercreateService.adduser(form.value.firstName, form.value.lastName, form.value.email, form.value.userName, form.value.password, form.value.personal, form.value.business);
+      this.usercreateService.adduser(
+        form.value.firstName,
+        form.value.lastName,
+        form.value.email,
+        form.value.userName,
+        form.value.password,
+        form.value.personal,
+        form.value.business);
     } else {
-      this.usercreateService.adduser(form.value.firstName, form.value.lastName, form.value.email, form.value.userName, form.value.password, form.value.personal, form.value.business);
+      this.usercreateService.updateUser(
+        this.userId,
+        form.value.firstName,
+        form.value.lastName,
+        form.value.email,
+        form.value.userName,
+        form.value.password,
+        form.value.personal,
+        form.value.business);
     }
     form.resetForm();
   }

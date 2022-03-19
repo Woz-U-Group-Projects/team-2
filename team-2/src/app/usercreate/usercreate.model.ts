@@ -7,5 +7,4 @@ export interface User {
   password: string;
   personal: boolean;
   business: boolean;
-  // admin: boolean;
 }
