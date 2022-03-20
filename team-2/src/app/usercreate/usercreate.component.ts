@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { User } from "./usercreate.model";
-
 import { UserCreateService } from "./usercreate.service";
 
 @Component({
@@ -33,7 +32,7 @@ export class UserCreateComponent implements OnInit {
         this.usercreateService.getUser(this.userId).subscribe(userData => {
           this.isLoading = false;
           this.user = {
-            id: userData._id,
+            _id: userData._id,
             firstName: userData.firstName,
             lastName: userData.lastName,
             email: userData.email,
@@ -47,6 +46,10 @@ export class UserCreateComponent implements OnInit {
           this.userId = null;
         }
     });
+  }
+
+  onDelete(userId: string) {
+    this.usercreateService.deleteUser(userId);
   }
 
   onSaveUser(form: NgForm) {

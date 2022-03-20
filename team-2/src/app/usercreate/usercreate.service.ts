@@ -21,7 +21,7 @@ export class UserCreateService {
       .pipe(map(userData => {
         return userData.users.map(user => {
           return {
-            id: user._id,
+            _id: user._id,
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
@@ -69,7 +69,7 @@ export class UserCreateService {
     {
     const user: User =
     {
-      id: null,
+      _id: null,
       firstName: firstName,
       lastName: lastName,
       email: email,
@@ -82,7 +82,7 @@ export class UserCreateService {
       .post<{ message: string, userId: string }>("http://localhost:3000/users", user)
       .subscribe(responseData => {
         const id = responseData.userId;
-        user.id = id;
+        user._id = id;
         this.users.push(user);
         this.usersUpdated.next([...this.users]);
         this.router.navigate(["/"]);
@@ -90,7 +90,7 @@ export class UserCreateService {
   }
 
   updateUser(
-    id: string,
+    _id: string,
     firstName: string,
     lastName: string,
     email: string,
@@ -100,7 +100,7 @@ export class UserCreateService {
     business: boolean)
     {
     const user: User =
-    { id: null,
+    { _id: null,
       firstName: firstName,
       lastName: lastName,
       email: email,
@@ -109,10 +109,10 @@ export class UserCreateService {
       personal:personal,
       business: business
     };
-    this.http.put("http://localhost:3000/users/" + id, user)
+    this.http.put("http://localhost:3000/users/" + _id, user)
     .subscribe(response => {
       const updatedUsers = [...this.users];
-      const oldUserIndex = updatedUsers.findIndex(p => p.id === user.id);
+      const oldUserIndex = updatedUsers.findIndex(p => p._id === user._id);
       updatedUsers[oldUserIndex] = user;
       this.users = updatedUsers;
       this.usersUpdated.next([...this.users]);
@@ -123,7 +123,7 @@ export class UserCreateService {
   deleteUser(userId: string) {
     this.http.delete("http://localhost:3000/users/" + userId)
     .subscribe(() => {
-      const updatedUsers = this.users.filter(user => user.id !== userId);
+      const updatedUsers = this.users.filter(user => user._id !== userId);
       this.users = updatedUsers;
       this.usersUpdated.next([...this.users]);
     });

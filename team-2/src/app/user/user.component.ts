@@ -1,20 +1,30 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import {  Subscription } from 'rxjs';
-
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from "@angular/forms";
+import { ActivatedRoute, ParamMap } from "@angular/router";
 import { User } from './user.model';
 import { UsersService } from './users.service';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit, OnDestroy {
-
+export class UserComponent implements OnInit {
+  enteredFirstName: "";
+  enteredLastName: "";
+  enteredEmail: "";
+  enteredUserName: "";
+  enteredPassword: "";
+  enteredPersonal: "";
+  enteredBusiness: "";
   users: User[] = [];
+  private mode = 'create';
+  private userId: string;
   private usersSub: Subscription = new Subscription;
 
-  constructor(public usersService: UsersService) {}
+  constructor(public usersService: UsersService, public route: ActivatedRoute) {}
 
   ngOnInit() {
     this.usersService.getUsers();
@@ -24,24 +34,34 @@ export class UserComponent implements OnInit, OnDestroy {
       });
   }
 
-  onDelete(userId: string) {
-    this.usersService.deleteUser(userId);
-  }
+    onDelete(userId: string) {
+      this.usersService.deleteUser(userId);
+    }
 
-  ngOnDestroy() {
-    this.usersSub.unsubscribe();
+  onSaveUser(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
+    if (this.mode === 'create') {
+      this.usersService.addUser(
+        form.value.firstName,
+        form.value.lastName,
+        form.value.email,
+        form.value.userName,
+        form.value.password,
+        form.value.personal,
+        form.value.business);
+    } else {
+      this.usersService.updateUser(
+        this.userId,
+        form.value.firstName,
+        form.value.lastName,
+        form.value.email,
+        form.value.userName,
+        form.value.password,
+        form.value.personal,
+        form.value.business);
+      }
+    form.resetForm();
   }
 }
-
-//   onSaveUser(form: NgForm) {
-//     if (form.invalid) {
-//       return;
-//     }
-//     if (this.mode === 'create') {
-//       this.usersService.addUser(form.value.userId, form.value.firstName, form.value.lastName, form.value.email, form.value.userName, form.value.password, form.value.personal, form.value.business, form.value.admin);
-//     } else {
-//       this.usersService.updateUser(this.userId, form.value.firstName, form.value.lastName, form.value.email, form.value.userName, form.value.password, form.value.personal, form.value.business, form.value.admin);
-//     }
-//     form.resetForm();
-//   }
-// }
