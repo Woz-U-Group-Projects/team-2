@@ -19,7 +19,7 @@ mongoose.connect("mongodb+srv://cleensvaart:g2L^VdmzuvsJJ85Db^@truck-u.xn293.mon
   });
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");

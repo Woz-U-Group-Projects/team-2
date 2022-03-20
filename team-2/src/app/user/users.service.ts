@@ -15,9 +15,10 @@ export class UsersService {
 
   getUsers() {
     this.http
-    .get<{ message: string; users: any }>(
-      "http://localhost:3000/users"
-    )
+    .get<{
+      message: string;
+      users: any
+    }>("http://localhost:3000/users")
     .pipe(map(userData => {
       return userData.users.map(user => {
         return {
@@ -28,8 +29,7 @@ export class UsersService {
           userName: user.userName,
           password: user.password,
           personal: user.personal,
-          business: user.business,
-          admin: user.admin
+          business: user.business
         };
       });
     })
