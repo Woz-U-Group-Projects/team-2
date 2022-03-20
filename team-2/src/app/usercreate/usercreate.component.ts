@@ -3,8 +3,6 @@ import { NgForm } from "@angular/forms";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { User } from "./usercreate.model";
 import { UserCreateService } from "./usercreate.service";
-import { Subscription } from 'rxjs';
-
 
 @Component({
   selector: "app-usercreate",
@@ -19,10 +17,9 @@ export class UserCreateComponent implements OnInit {
   enteredPassword: "";
   enteredPersonal: "";
   enteredBusiness: "";
-  users: User;
+  user: User;
   private mode = 'create';
   private userId: string;
-  private usersSub: Subscription = new Subscription;
 
   constructor(public usercreateService: UserCreateService, public route: ActivatedRoute) {}
 
@@ -30,9 +27,9 @@ export class UserCreateComponent implements OnInit {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('userId')) {
         this.mode = 'edit';
-        this.userId = paramMap.get('UserId');
+        this.userId = paramMap.get('userId');
         this.usercreateService.getUser(this.userId).subscribe(userData => {
-          this.users = {
+          this.user = {
             _id: userData._id,
             firstName: userData.firstName,
             lastName: userData.lastName,
@@ -48,10 +45,6 @@ export class UserCreateComponent implements OnInit {
           this.userId = null;
         }
     });
-  }
-
-  onDelete(userId: string) {
-    this.usercreateService.deleteUser(userId);
   }
 
   onSaveUser(form: NgForm) {
