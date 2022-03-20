@@ -21,15 +21,15 @@ export class UserCreateService {
       .pipe(map(userData => {
         return userData.users.map(user => {
           return {
-            _id: user._id,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            email: user.email,
-            userName: user.userName,
-            password: user.password,
-            personal: user.personal,
-            business: user.business,
-            admin: user.admin
+            _id: user?._id,
+            firstName: user?.firstName,
+            lastName: user?.lastName,
+            email: user?.email,
+            userName: user?.userName,
+            password: user?.password,
+            personal: user?.personal,
+            business: user?.business,
+            admin: user?.admin
           };
         });
       })
@@ -59,6 +59,7 @@ export class UserCreateService {
   }
 
   adduser(
+    _id: string,
     firstName: string,
     lastName: string,
     email: string,
@@ -79,7 +80,10 @@ export class UserCreateService {
       business: business
     };
     this.http
-      .post<{ message: string, userId: string }>("http://localhost:3000/users", user)
+      .post<{
+        message: string,
+        userId: string,
+        }>("http://localhost:3000/users", user)
       .subscribe(responseData => {
         const id = responseData.userId;
         user._id = id;
@@ -100,7 +104,8 @@ export class UserCreateService {
     business: boolean)
     {
     const user: User =
-    { _id: null,
+    {
+      _id: null,
       firstName: firstName,
       lastName: lastName,
       email: email,
