@@ -3,7 +3,7 @@ const User = require("../backend/models/user");
 
 const router = express.Router();
 
-router.post("", (req, res, next) => {
+router.post("", async (req, res, next) => {
   const user = new User({
     _id: req.body._id,
     firstName: req.body.firstName,

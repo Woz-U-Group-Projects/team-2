@@ -5,6 +5,7 @@ const dotenv = require('dotenv').config();
 
 const postsRoutes = require("../routes/posts");
 const usersRoutes = require("../routes/users");
+const authRoute = require('../routes/auth');
 
 const app = express();
 
@@ -17,6 +18,8 @@ mongoose.connect("mongodb+srv://cleensvaart:g2L^VdmzuvsJJ85Db^@truck-u.xn293.mon
   .catch(() => {
     console.log('Connection failed!');
   });
+
+const authRoute = require('../routes/auth');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
