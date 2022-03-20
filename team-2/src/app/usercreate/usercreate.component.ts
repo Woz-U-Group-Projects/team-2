@@ -3,6 +3,8 @@ import { NgForm } from "@angular/forms";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { User } from "./usercreate.model";
 import { UserCreateService } from "./usercreate.service";
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: "app-usercreate",
@@ -17,10 +19,10 @@ export class UserCreateComponent implements OnInit {
   enteredPassword: "";
   enteredPersonal: "";
   enteredBusiness: "";
-  user: User;
-  isLoading = false;
+  users: User;
   private mode = 'create';
   private userId: string;
+  private usersSub: Subscription = new Subscription;
 
   constructor(public usercreateService: UserCreateService, public route: ActivatedRoute) {}
 
@@ -28,10 +30,9 @@ export class UserCreateComponent implements OnInit {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('userId')) {
         this.mode = 'edit';
-        this.userId = paramMap.get('userId');
+        this.userId = paramMap.get('UserId');
         this.usercreateService.getUser(this.userId).subscribe(userData => {
-          this.isLoading = false;
-          this.user = {
+          this.users = {
             _id: userData._id,
             firstName: userData.firstName,
             lastName: userData.lastName,
@@ -39,7 +40,8 @@ export class UserCreateComponent implements OnInit {
             userName: userData.userName,
             password: userData.password,
             personal: userData.personal,
-            business: userData.business};
+            business: userData.business
+          };
         });
         } else {
           this.mode = 'create';

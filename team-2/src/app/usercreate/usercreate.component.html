@@ -12,15 +12,15 @@
           <form style="width: 100%" class="formTop" (submit)="onSaveUser(userForm)" #userForm="ngForm">
             <div class="form-group" >
               <label>First Name:</label>
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="user.firstName">
+              <input type="text" class="form-control" placeholder="" [(ngModel)]="users.firstName">
             </div>
             <div class="form-group">
               <label>Last Name:</label>
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="user.lastName">
+              <input type="text" class="form-control" placeholder="" [(ngModel)]="users.lastName">
             </div>
             <div class="form-group">
               <label>Email Address:</label>
-              <input type="email" class="form-control" placeholder="" [(ngModel)]="user.email">
+              <input type="email" class="form-control" placeholder="" [(ngModel)]="users.email">
               <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
           </form>
@@ -29,11 +29,11 @@
           <form style="width: 100%" class="formTop" (submit)="onSaveUser(userForm)" #userForm="ngForm">
             <div class="form-group">
               <label>Username:</label>
-              <input type="text" class="form-control" placeholder="" [(ngModel)]="user.userName">
+              <input type="text" class="form-control" placeholder="" [(ngModel)]="users.userName">
             </div>
             <div class="form-group">
               <label>Password:</label>
-              <input type="password" class="form-control" placeholder="" [(ngModel)]="user.password">
+              <input type="password" class="form-control" placeholder="" [(ngModel)]="users.password">
             </div>
             <hr>
             <div>
@@ -61,3 +61,5 @@
         </div>
     </div>
 </div>
+
+

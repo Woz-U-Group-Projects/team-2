@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const postSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
   _id: { type: String, required: false },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
@@ -11,5 +11,5 @@ const postSchema = mongoose.Schema({
   business: { type: Boolean, required: false },
 });
 
-module.exports = mongoose.model('User', postSchema);
+module.exports = mongoose.model('User', userSchema);
 
