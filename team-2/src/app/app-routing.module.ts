@@ -14,7 +14,7 @@ import { UserCreateComponent } from './usercreate/usercreate.component';
 const routes: Routes = [
   {
     path: '',
-    component: UserComponent
+    component: ProfileComponent
   },
   {
     path: 'edit/:postId',

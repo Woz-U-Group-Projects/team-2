@@ -84,12 +84,11 @@ export class UserCreateService {
         userId: string
         }>("http://localhost:3000/users", user)
       .subscribe(responseData => {
-        console.log(user);
-        // const id = responseData.userId;
-        // user._id = id;
-        // this.users.push(user);
-        // this.usersUpdated.next([...this.users]);
-        // this.router.navigate(["/users"]);
+        const id = responseData.userId;
+        user._id = id;
+        this.users.push(user);
+        this.usersUpdated.next([...this.users]);
+        this.router.navigate(["/users"]);
       });
   }
 
