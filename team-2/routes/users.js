@@ -1,23 +1,32 @@
 const express = require("express");
 const User = require("../backend/models/user");
+const bcrypt = require('bcrypt');
 
 const router = express.Router();
 
 router.post("", (req, res, next) => {
-  const user = new User({
-    _id: req.body._id,
-    firstName: req.body.firstName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    userName: req.body.userName,
-    password: req.body.password,
-    personal: req.body.personal,
-    business: req.body.business,
-  });
-  user.save().then(createdUser => {
-    res.status(201).json({
-      message: 'User added successfully',
-      userId: createdUser.userId
+  bcrypt.hash(req.body.password, 10)
+  .then(hash => {
+    const user = new User({
+      _id: req.body._id,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email,
+      userName: req.body.userName,
+      password: hash,
+      personal: req.body.personal,
+      business: req.body.business
+    });
+    user.save().then(createdUser => {
+      res.status(201).json({
+        message: 'User added successfully',
+        userId: createdUser.userId
+      });
+    })
+    .catch(err => {
+      res.status(500).json({
+        error: err
+      })
     });
   });
 });
