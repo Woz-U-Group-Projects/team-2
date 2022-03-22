@@ -1,7 +1,7 @@
+const dotenv = require('dotenv');
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
-const dotenv = require('dotenv')
 // const bcrypt = require('bcrypt');
 
 const postsRoutes = require("../routes/posts");
@@ -9,14 +9,14 @@ const usersRoutes = require("../routes/users");
 
 const app = express();
 
-dotenv.config()
+dotenv.config({ path: './.env' });
 
-mongoose.connect(process.env.MONGODB_STUFF)
+mongoose.connect(process.env.DB_SECRET)
   .then(() => {
     console.log('Connected to the database!');
   })
-  .catch(() => {
-    console.log('Connection Failed!');
+  .catch('error', (error) => {
+    console.log('Connection Failed!', error);
   });
 
 app.use(bodyParser.json());
