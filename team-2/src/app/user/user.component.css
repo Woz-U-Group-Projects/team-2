@@ -11,3 +11,14 @@
   margin-top: 5.5rem;
 }
 
+.noUsers {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 10px 10px 0;
+}

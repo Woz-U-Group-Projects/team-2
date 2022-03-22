@@ -17,10 +17,13 @@
           <p>Personal Account: {{ user.personal }}</p>
         </div>
         <div class="buttons">
-          <a type="button" class="btn btn-outline-info edit" [routerLink]="['/edit', user._id]">Edit</a>
+          <!-- <a type="button" class="btn btn-outline-info edit" [routerLink]="['/edit/_id', user._id]">Edit</a> -->
           <button type="button" class="btn btn-outline-danger" (click)="onDelete(user._id)">Delete</button>
           </div>
       </div>
+    </div>
+    <div class="row">
+      <h3 class="noUsers" *ngIf="users.length <= 0" >No users found...</h3>
     </div>
   </div>
 </div>
