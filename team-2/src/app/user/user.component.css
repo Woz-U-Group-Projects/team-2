@@ -22,3 +22,13 @@
   justify-content: flex-end;
   margin: 0 10px 10px 0;
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.width {
+  width: 50%;
+}

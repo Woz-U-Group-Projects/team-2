@@ -19,4 +19,14 @@
   font-size: .5em;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+}
+
+.width {
+  width: 65%;
+}
+
 

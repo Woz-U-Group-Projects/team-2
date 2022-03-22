@@ -13,3 +13,7 @@
 .form-text {
   font-size: 10px;;
 }
+
+.container {
+  justify-content: center;
+}
