@@ -1,19 +1,19 @@
 const express = require("express");
 const User = require("../backend/models/user");
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
 const router = express.Router();
 
-router.post("", (req, res, next) => {
-  bcrypt.hash(req.body.password, 10)
-  .then(hash => {
+router.post("", async (req, res, next) => {
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(req.body.password, salt);
     const user = new User({
       _id: req.body._id,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
       userName: req.body.userName,
-      password: hash,
+      password: hashedPassword,
       personal: req.body.personal,
       business: req.body.business
     });
@@ -27,7 +27,6 @@ router.post("", (req, res, next) => {
       res.status(500).json({
         error: err
       })
-    });
   });
 });
 

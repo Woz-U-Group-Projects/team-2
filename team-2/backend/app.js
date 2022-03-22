@@ -2,7 +2,7 @@ const dotenv = require('dotenv');
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const postsRoutes = require("../routes/posts");
 const usersRoutes = require("../routes/users");

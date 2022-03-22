@@ -1,15 +1,17 @@
 const express = require("express");
-
 const router = express.Router();
+const bcrypt = require('bcryptjs');
 
 router.post("", (req, res, next) => {
+  const salt = bcrypt.genSalt(10);
+  const hashedPassword = bcrypt.hash(req.body.password, 10);
   const user = new User({
     _id: req.body._id,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
     userName: req.body.userName,
-    password: req.body.password,
+    password: hashedPassword,
     personal: req.body.personal,
     business: req.body.business,
   });
