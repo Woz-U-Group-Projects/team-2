@@ -12,6 +12,9 @@ const app = express();
 
 dotenv.config({ path: './.env' });
 
+const port = process.env.PORT || 3000;
+  console.log(`Your port is ${port}`);
+
 mongoose.connect(process.env.DB_SECRET)
   .then(() => {
     console.log('Connected to the database!');
