@@ -6,10 +6,13 @@ const bcrypt = require('bcryptjs');
 
 const postsRoutes = require("../routes/posts");
 const usersRoutes = require("../routes/users");
+const { Server } = require('http');
 
 const app = express();
 
 dotenv.config({ path: './.env' });
+
+const PORT = process.env.PORT || 3000;
 
 mongoose.connect(process.env.DB_SECRET)
   .then(() => {
@@ -18,6 +21,7 @@ mongoose.connect(process.env.DB_SECRET)
   .catch('error', (error) => {
     console.log('Connection Failed!', error);
   });
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
