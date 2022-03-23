@@ -12,8 +12,6 @@ const app = express();
 
 dotenv.config({ path: './.env' });
 
-const PORT = process.env.PORT || 3000;
-
 mongoose.connect(process.env.DB_SECRET)
   .then(() => {
     console.log('Connected to the database!');
