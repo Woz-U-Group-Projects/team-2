@@ -1,0 +1,14 @@
+.nav {
+  font-family: 'Orelega One';
+  font-size: 1.25rem;
+}
+
+.marginBottom {
+  margin-bottom: 1rem;
+}
+
+.logo {
+  height: 75px;
+  width: auto;
+  padding: 0;
+}

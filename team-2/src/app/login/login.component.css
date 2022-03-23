@@ -1,0 +1,18 @@
+.loginImage {
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  height: auto;
+  margin-top: 2rem;
+}
+
+.loginForm {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+button {
+  margin-top: 15px;
+}
+

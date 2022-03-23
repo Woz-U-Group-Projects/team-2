@@ -1,0 +1,32 @@
+.noPosts {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 10px 10px 0;
+}
+
+.edit {
+  margin: 0 10px 0 0;
+}
+
+.title {
+  font-weight:800;
+  font-size: .5em;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+}
+
+.width {
+  width: 65%;
+}
+
+

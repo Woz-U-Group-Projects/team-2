@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col center">
+      <h3>User List</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col center">
+      <div class="accordion width" id="accordionExample" multi="true">
+        <div class="accordion-item" *ngFor="let user of users">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button title" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              {{ user.firstName }} {{ user.lastName }}
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <p>User Id:  {{ user._id }}</p>
+              <p>First Name: {{ user.firstName }}</p>
+              <p>Last Name: {{ user.lastName }}</p>
+              <p>Email: {{ user.email }}</p>
+              <p>Username: {{ user.userName }}</p>
+              <p>Password: {{ user.password }}</p>
+              <p>Personal Account: {{ user.personal }}</p>
+            </div>
+            <div class="buttons">
+              <!-- <a type="button" class="btn btn-outline-info edit" [routerLink]="['/edit/_id', user._id]">Edit</a> -->
+              <button type="button" class="btn btn-outline-danger" (click)="onDelete(user._id)">Delete</button>
+              </div>
+          </div>
+        </div>
+        <div class="row">
+          <h3 class="noUsers" *ngIf="users.length <= 0" >No users found...</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

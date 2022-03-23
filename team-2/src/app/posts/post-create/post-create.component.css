@@ -1,0 +1,13 @@
+.display {
+  font-family: 'Orelega One';
+}
+
+.form {
+  width: 60%;
+  justify-content: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
