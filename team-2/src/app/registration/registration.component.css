@@ -1,9 +1,9 @@
 .createProfile {
-  font-family: 'Orelega One';
+  font-family: "Orelega One";
 }
 
 .topMargin {
-  margin-top: .75rem;
+  margin-top: 0.75rem;
 }
 
 .formTop {
@@ -11,7 +11,7 @@
 }
 
 .form-text {
-  font-size: 10px;;
+  font-size: 10px;
 }
 
 .container {

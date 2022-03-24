@@ -10,7 +10,7 @@ import { NgModel } from '@angular/forms';
 })
 export class LoginComponent {
 
-  onLogin(form:NgForm) {
+  onLogin(form: NgForm) {
 
   }
 

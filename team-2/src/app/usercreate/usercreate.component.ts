@@ -21,7 +21,7 @@ export class UserCreateComponent implements OnInit {
   private mode = 'create';
   private userId: string;
 
-  constructor(public usercreateService: UserCreateService, public route: ActivatedRoute) {}
+  constructor(public usercreateService: UserCreateService, public route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
@@ -40,10 +40,10 @@ export class UserCreateComponent implements OnInit {
             business: userData.business
           };
         });
-        } else {
-          this.mode = 'create';
-          this.userId = null;
-        }
+      } else {
+        this.mode = 'create';
+        this.userId = null;
+      }
     });
   }
 
