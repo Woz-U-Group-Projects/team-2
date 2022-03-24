@@ -6,7 +6,8 @@ const router = express.Router();
 router.post("", (req, res, next) => {
   const post = new Post({
     title: req.body.title,
-    content: req.body.content
+    content: req.body.content,
+    date: req.body.date
   });
   post.save().then(createdPost => {
     res.status(201).json({
