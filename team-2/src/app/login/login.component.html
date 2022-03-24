@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row d-flex justify-content-center text-center">
     <div class="col loginImage">
-      <img src="/../assets/images/TRUCK-U-2.png" class="img-fluid">
+      <img src="/../assets/images/TRUCK-U-2.png" class="img-fluid" />
     </div>
   </div>
   <div class="row justify-content-center">
@@ -10,11 +10,25 @@
         <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
           <div class="form-group">
             <label>Username:</label>
-            <input type="text" name="userName" class="form-control" placeholder="Username" [ngModel]="" required>
+            <input
+              type="text"
+              name="userName"
+              class="form-control"
+              placeholder="Username"
+              [ngModel]=""
+              required
+            />
           </div>
           <div class="form-group">
             <label>Password:</label>
-            <input type="password" name="password" [ngModel]="" class="form-control" placeholder="Password" required>
+            <input
+              type="password"
+              name="password"
+              [ngModel]=""
+              class="form-control"
+              placeholder="Password"
+              required
+            />
           </div>
         </form>
         <div>
@@ -24,4 +38,3 @@
     </div>
   </div>
 </div>
-

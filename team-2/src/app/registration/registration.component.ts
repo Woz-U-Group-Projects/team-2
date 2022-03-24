@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {  NgForm } from "@angular/forms";
+import { NgForm } from "@angular/forms";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { Registration } from "./registration.model";
 
@@ -22,7 +22,7 @@ export class RegistrationComponent implements OnInit {
   private mode = 'create';
   private userId: string;
 
-  constructor(public registrationsService: RegistrationsService, public route: ActivatedRoute) {}
+  constructor(public registrationsService: RegistrationsService, public route: ActivatedRoute) { }
 
   ngOnInit() {
     // this.route.paramMap.subscribe((paramMap: ParamMap) => {

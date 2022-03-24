@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const postSchema = mongoose.Schema({
   person: { type: String, required: true },
-  business: {type: String, required: true },
+  business: { type: String, required: true },
   email: { type: String, required: true },
   birthday: { type: Date, required: false },
   years: { type: Number, required: false },
@@ -25,4 +25,4 @@ const postSchema = mongoose.Schema({
   stock: { type: String, required: false },
 });
 
-module.exports = mongoose.model('Profile', postSchema);
+module.exports = mongoose.model("Profile", postSchema);

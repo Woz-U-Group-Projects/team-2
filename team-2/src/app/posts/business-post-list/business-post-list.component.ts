@@ -13,7 +13,7 @@ export class BusinessPostListComponent implements OnInit {
   posts: Post[] = [];
   private postsSub: Subscription = new Subscription;
 
-  constructor(public postsService: PostsService) {}
+  constructor(public postsService: PostsService) { }
 
   ngOnInit() {
     this.postsService.getPosts();

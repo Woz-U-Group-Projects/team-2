@@ -14,7 +14,7 @@ export class UserComponent implements OnInit {
   users: User[] = [];
   private usersSub: Subscription = new Subscription;
 
-  constructor(public usersService: UsersService) {}
+  constructor(public usersService: UsersService) { }
 
   ngOnInit() {
     this.usersService.getUsers();
@@ -24,9 +24,9 @@ export class UserComponent implements OnInit {
       });
   }
 
-    onDelete(userId: string) {
-      this.usersService.deleteUser(userId);
-    }
+  onDelete(userId: string) {
+    this.usersService.deleteUser(userId);
+  }
 
   ngOnDestroy() {
     this.usersSub.unsubscribe();

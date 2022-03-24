@@ -1,48 +1,61 @@
 <div class="container">
-  <div class="ramble text-center">Ramble On...
-  </div>
-    <div class="row">
-      <div class="col center">
-        <div class="d-flex justify-content-center">
-          <div class="spinner-border" *ngIf="isLoading">
-            <span class="visually-hidden">Loading...</span>
-          </div>
+  <div class="ramble text-center">Ramble On...</div>
+  <div class="row">
+    <div class="col center">
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" *ngIf="isLoading">
+          <span class="visually-hidden">Loading...</span>
         </div>
-        <form class="form" (submit)="onSavePost(postForm)" #postForm="ngForm" *ngIf="!isLoading">
-          <div class="form-group justify-content-center">
-            <div class="d-flex justify-content-center">
-            </div>
-            <label for="title">Title</label>
-              <input
-              type="text"
-              class="title form-control mt-2"
-              aria-describedby=""
-              placeholder="Enter a title for your post"
-              name="title"
-              [ngModel]="post?.title"
-              />
-          </div>
-          <div>
-            <br>
-            <button type="button" class="btn-sm btn-secondary" (click)="filePicker.click()">Select Image</button>
-            <input type="file" style="visibility: hidden;" #filePicker (change)="onImagePicked($event)">
-          </div>
-          <div class="form-group">
-            <label for="contentArea" class="form-label mt-4">Content</label>
-            <textarea
+      </div>
+      <form
+        class="form"
+        (submit)="onSavePost(postForm)"
+        #postForm="ngForm"
+        *ngIf="!isLoading"
+      >
+        <div class="form-group justify-content-center">
+          <div class="d-flex justify-content-center"></div>
+          <label for="title">Title</label>
+          <input
+            type="text"
+            class="title form-control mt-2"
+            aria-describedby=""
+            placeholder="Enter a title for your post"
+            name="title"
+            [ngModel]="post?.title"
+          />
+        </div>
+        <div>
+          <br />
+          <button
+            type="button"
+            class="btn-sm btn-secondary"
+            (click)="filePicker.click()"
+          >
+            Select Image
+          </button>
+          <input
+            type="file"
+            style="visibility: hidden"
+            #filePicker
+            (change)="onImagePicked($event)"
+          />
+        </div>
+        <div class="form-group">
+          <label for="contentArea" class="form-label mt-4">Content</label>
+          <textarea
             rows="5"
             class="form-control"
             placeholder="Add Content"
             name="content"
-            [ngModel]="post?.content">
-            </textarea>
-          </div>
-          <br>
-          <button type="submit" class="btn btn-primary">Save Post</button>
-          <hr>
-        </form>
-      </div>
+            [ngModel]="post?.content"
+          >
+          </textarea>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Save Post</button>
+        <hr />
+      </form>
     </div>
+  </div>
 </div>
-
-
