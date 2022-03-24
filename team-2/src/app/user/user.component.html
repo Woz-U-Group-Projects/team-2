@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col center">
+    <div class="col center top">
       <h3>User List</h3>
     </div>
   </div>
@@ -20,8 +20,10 @@
               <p>Last Name: {{ user.lastName }}</p>
               <p>Email: {{ user.email }}</p>
               <p>Username: {{ user.userName }}</p>
-              <p>Password: {{ user.password }}</p>
               <p>Personal Account: {{ user.personal }}</p>
+              <hr>
+              <p class="passwordFont">Password: {{ user.password }}</p>
+              <hr>
             </div>
             <div class="buttons">
               <!-- <a type="button" class="btn btn-outline-info edit" [routerLink]="['/edit/_id', user._id]">Edit</a> -->
@@ -36,4 +38,3 @@
     </div>
   </div>
 </div>
-

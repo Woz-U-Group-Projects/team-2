@@ -14,11 +14,6 @@
   margin: 0 10px 0 0;
 }
 
-.title {
-  font-weight:800;
-  font-size: .5em;
-}
-
 .center {
   display: flex;
   justify-content: center;
@@ -26,7 +21,7 @@
 }
 
 .width {
-  width: 65%;
+  width: 50%;
 }
 
 
