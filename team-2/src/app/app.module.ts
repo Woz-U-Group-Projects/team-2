@@ -13,7 +13,6 @@ import { PostCreateComponent } from './posts/post-create/post-create.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
 import { WidgetComponent } from './widget/widget.component';
 import { RouterModule } from '@angular/router';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BusinessProfileComponent } from './business-profile/business-profile.component';
@@ -32,7 +31,6 @@ import { UserCreateComponent } from './usercreate/usercreate.component';
     PostCreateComponent,
     PostListComponent,
     WidgetComponent,
-    SidebarComponent,
     BusinessProfileComponent,
     BusinessPostCreateComponent,
     BusinessPostListComponent,
